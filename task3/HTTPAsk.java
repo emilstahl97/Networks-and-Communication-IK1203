@@ -25,6 +25,10 @@ public class HTTPAsk
     String serverOutput = null;
     String serverResponse;
     String statusLine = null;
+    String HTTP404 = "HTTP/1.1 404 Not Found\r\n\r\n"; 
+    String HTTP200 = "HTTP/1.1 200 OK\r\n\r\n";
+    String HTTP400 = "HTTP/1.1 400 Bad Request\r\n\r\n";
+
 
 	ServerSocket HTTPSocket = new ServerSocket(port); 
 
@@ -52,15 +56,15 @@ public class HTTPAsk
 
           if(subString[1].matches("(?i).*/favicon.ico.*"))
           {
-            statusLine = ("HTTP/1.1 404 Not Found\r\n\r\n");
+            statusLine = HTTP404;
           }
           else if((subString[0].equals("GET")) || (subString[1].matches("(?i).*/ask?.*")))
           {
-            statusLine = ("HTTP/1.1 200 OK\r\n\r\n");
+            statusLine = HTTP200;
           }
           else
           {
-            statusLine = ("HTTP/1.1 400 Bad Request\r\n\r\n");
+            statusLine = HTTP400;
           }
 
           int length = subString.length;
@@ -91,14 +95,14 @@ public class HTTPAsk
       try
       {
         serverOutput = askServer(hostname, port, serverInput);
-        if((serverOutput.equals("HTTP/1.1 404 Not Found\r\n\r\n")) || (serverOutput.equals("HTTP/1.1 400 Bad Request\r\n\r\n")))
+        if((serverOutput.equals(HTTP404.toString())) || (serverOutput.equals(HTTP400.toString())))
         {
           statusLine = serverOutput;
         }
       }
-      catch(IOException ex)
+      catch(IOException error)
       {
-        System.err.println(ex);
+        System.err.println(error);
       }
       response.append(statusLine);
       response.append(serverOutput + "\r\n");
