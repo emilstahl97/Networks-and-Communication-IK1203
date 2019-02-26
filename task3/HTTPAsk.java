@@ -38,7 +38,6 @@ public class HTTPAsk
     String HTTP200 = "HTTP/1.1 200 OK\r\n\r\n";
     String HTTP400 = "HTTP/1.1 400 Bad Request\r\n\r\n";
 
-
 	ServerSocket HTTPSocket = new ServerSocket(port); 
 
     while(true)
