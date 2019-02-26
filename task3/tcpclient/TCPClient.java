@@ -90,7 +90,6 @@ public class TCPClient
         {
           System.err.println(ex);
           return serverOutput;
-          //return "HTTP/1.1 404 Not Found\r\n\r\n";
         }
       }
 
