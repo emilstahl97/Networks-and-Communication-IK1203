@@ -67,17 +67,32 @@ public class TCPClient
 
             return serverOutput;
         }
-        //catch timeout case, return whatever recieved so far 
         catch(SocketTimeoutException ex)
         {
-            return serverOutput;
+          System.err.println(ex);
+          return serverOutput;
         }
-        //if connection got lost
         catch(ConnectException ex)
         {
-            return "Connection lost";
+          System.err.println(ex);
+          return "Package discarded";
         }
-    }
+        catch(UnknownHostException ex)
+        {
+          System.err.println(ex);
+          if(hostname.equals("HTTP/1.1"))
+          {
+            return "HTTP/1.1 400 Bad Request\r\n\r\n";
+          }
+          return "HTTP/1.1 404 Not Found\r\n\r\n";
+        }
+        catch(SocketException ex)
+        {
+          System.err.println(ex);
+          return serverOutput;
+          //return "HTTP/1.1 404 Not Found\r\n\r\n";
+        }
+      }
 
     //instead of creating a new method with the same code
     public static String askServer(String hostname, int port) throws  IOException //overloaded function
