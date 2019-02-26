@@ -1,8 +1,16 @@
+/* This is a web server that uses the client I did in Task 1. 
+ * When you send an HTTP request to this web server, you provide a hostname, a port number, and optionally a string as parameters for the request.
+ * The web server will call the method TCPClient.askServer, and return the output as an HTTP response.
+
+@author Emil Stahl
+*/ 
+
 import java.net.*;
 import java.io.*;
 import tcpclient.TCPClient;
 
 public class HTTPAsk
+
 {
   public static void main(String[] args) throws IOException
   {
@@ -43,10 +51,11 @@ public class HTTPAsk
       //open bufferreader and outputstream 
 	  BufferedReader clientInput = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 	  DataOutputStream clientOutput = new DataOutputStream(connection.getOutputStream());
-	  //The echo from server that is being returned to the client
+	  //The response from server that is being returned to the web browser
 	  StringBuilder response = new StringBuilder();
-	boolean statusLineCheck = true;
+	  boolean statusLineCheck = true;
 
+	  //while there's input, continue reading 
       while(((clientSentence = clientInput.readLine()) != null) && (clientSentence.length() != 0))
       {
         if(statusLineCheck)
