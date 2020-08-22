@@ -1,7 +1,7 @@
 # Natverk-kommunikation-IK1203
 
-Content and learning outcomes
-Course contents *
+## Content and learning outcomes
+### Course contents 
 
 Flow control and error control: flow control (stop&wait, sliding window), error detection and error handling, error correcting codes, retransmission (ARQ).
 Layered models: overview of OSI and TCP/IP.
@@ -13,7 +13,7 @@ Communcation models: "Client-server" and "peer-to-peer".
 Applications: DNS, SMTP, FTP, HTTP, Telnet mm.
 Network programming.
 
-Intended learning outcomes *
+### Intended learning outcomes
 
 The goals of the course is to teach the basics of networking and communication. For those interested in specializing in networking, it provides the fundamentals on which later courses build.
 
@@ -29,4 +29,3 @@ explain and implement basic algorithms and mechanisms for error detection, error
 design, implement and analyse the behaviour of basic Internet applications and their protocols
 explain different functions and concepts concerning equipment for communication and networks
 compute and/or approximate the performance of communication systems, and suggest improvements.
-
